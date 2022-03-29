@@ -2,16 +2,17 @@
   <v-app>
     <div :class="sandwichClass" ></div>
     <div :class="mask" @click="sandwich"></div>
-    <div style="display:inline-flex;flex-wrap: nowrap;justify-content: space-around">
+    <div style="width:100%;display:inline-flex;flex-wrap: nowrap;justify-content: center">
       <div
         color="white  accent-4"
         dense
-        width="100%"
-        style="display:flex;flex-direction:column;position:relative;z-index:3;background-color:white"
+        style="width:100%;display:flex;flex-direction:column;position:relative;z-index:3;background-color:white;margin: auto"
         @click="autoCompleteShow=false"
       >
         <div class="header-container">
-          <v-app-bar-nav-icon @click="sandwich"/>
+          <v-icon class="pr-6" x-large aria-hidden="false" @click="sandwich">
+                mdi-menu
+          </v-icon>
           <v-toolbar-title class="title-container">
             <nuxt-link to="/">
               <img class="logo" src="https://hs3-cf.behtarino.com/media/business_icons/em-jfdeilefuf-logo.jpg">
@@ -32,17 +33,17 @@
             </div>
           </div>
           <div class="sign-cart-container">
-            <div class="signIn-signUp">
+            <div class="signIn-signUp" @click="$router.push('/signin')">
               <span v-if="token" @click="logout">logout</span>
-              <span v-else @click="$router.push('/signin')">login</span>
-              <v-icon aria-hidden="false">
+              <span v-else  >login</span>
+              <v-icon x-large aria-hidden="false">
                 mdi-account
               </v-icon>
             </div>
             <nuxt-link to="/checkout">
               <div class="cart">
                 shop cart
-                <v-icon aria-hidden="false">
+                <v-icon x-large aria-hidden="false">
                   mdi-basket
                 </v-icon>
               </div>
@@ -208,22 +209,26 @@ export default {
 
   .child-menu{
     position: absolute;
+    padding-top: 7px;
     width: 100%;
     background-color: white;
-    display: flex;
     flex-direction: column;
     z-index: 2;
     opacity: 0;
     border-radius: 8px;
     min-height: 100px;
     transition: all .5s;
+    display: flex;
+    visibility: hidden;
   }
 
-  .nav-item:hover .child-menu {
+  .nav-item:hover > .child-menu {
+    visibility: visible;
     opacity: 1;
     transition: all .5s;
   }
   .header-container{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
