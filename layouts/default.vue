@@ -2,7 +2,7 @@
   <v-app>
     <div :class="sandwichClass" ></div>
     <div :class="mask" @click="sandwich"></div>
-    <div style="display:inline-flex;flex-wrap: nowrap">
+    <div style="display:inline-flex;flex-wrap: nowrap;justify-content: space-around">
       <div
         color="white  accent-4"
         dense
