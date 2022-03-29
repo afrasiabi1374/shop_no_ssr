@@ -11,7 +11,7 @@
       >
         <div class="header-container">
           <v-icon class="pr-6" x-large aria-hidden="false" @click="sandwich">
-                mdi-menu
+            mdi-menu
           </v-icon>
           <v-toolbar-title class="title-container">
             <nuxt-link to="/">
@@ -242,7 +242,7 @@ export default {
     width: 20%;
   }
   .search-container{
-    width: 71%;
+    width: 70%;
   }
   .search{
     position: absolute;
@@ -283,7 +283,7 @@ export default {
     border-top: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
     border-bottom: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
     top: 100%;
-    background-color: teal;
+    background-color: rgb(3, 216, 216);
  }
 .cursor-pointer{
   cursor: pointer;
