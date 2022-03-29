@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <v-progress-circular
       v-if="loading"
       :size="50"
@@ -8,16 +8,17 @@
     />
 
     <div v-else class="single">
+
       <ImageMagnifier
         class="magnifier"
         :src="pro.image"
         :zoom-src="pro.image"
-        width="700"
+        width="80%"
         height="500"
-        zoom-width="800"
-        zoom-height="600"
+        zoom-width="500"
+        zoom-height="400"
       />
-      <div>
+      <div class="pro-text">
         <h1>
           name : {{ pro.title }}
         </h1>
@@ -68,13 +69,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.single {
+  display: flex;
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .single {
+    flex-direction: column;
+  }
+
+}
+.pro-text {
+  width: 60%;
+}
 .single{
   margin-top: 100px;
   min-height: 100vh;
   display: flex;
 }
-.magnifier{
 
-}
 </style>
