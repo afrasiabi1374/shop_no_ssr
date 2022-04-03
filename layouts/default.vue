@@ -1,6 +1,24 @@
 <template>
   <v-app>
-    <div :class="sandwichClass" ></div>
+    <div :class="sandwichClass">
+      <div class="d-flex justify-center">
+        <div class="signIn-signUp" @click="$router.push('/signin')">
+          <span v-if="token" @click="logout">logout</span>
+          <span v-else  >login</span>
+          <v-icon large aria-hidden="false">
+            mdi-account
+          </v-icon>
+        </div>
+        <nuxt-link to="/checkout">
+          <div class="cart">
+            shop cart
+            <v-icon large aria-hidden="false">
+              mdi-basket
+            </v-icon>
+          </div>
+        </nuxt-link>
+    </div>
+    </div>
     <div :class="mask" @click="sandwich"></div>
     <div style="width:100%;display:inline-flex;flex-wrap: nowrap;justify-content: center">
       <div
@@ -28,7 +46,7 @@
                 <li v-for="(item, i) in autoCompleteOutput" :key="i" class="mt-6 autoCompleteItem" @click="$router.push(`/Products/singlepro/${item.id}`)" > {{ item.title }} </li>
               </ul>
             </div>
-          <div class="sign-cart-container">
+          <div class="d-none d-lg-flex d-xl-flex">
             <div class="signIn-signUp" @click="$router.push('/signin')">
               <span v-if="token" @click="logout">logout</span>
               <span v-else  >login</span>
@@ -198,8 +216,12 @@ export default {
     top: 12%;
     left: 20%;
   }
+  @media  (max-width:960px){
+    .search {
+      margin-left: 8%;
+    }
+  }
   .sign-cart-container{
-    display: flex;
     position: absolute;
     left: 87%;
   }
@@ -252,7 +274,7 @@ export default {
   cursor: pointer;
 }
 .sandwich-hide{
-    transition: all 1s;
+    transition: all .4s ease-in-out;
   transform: translateX(-700px);
   position: fixed;
   width: 300px;
@@ -263,7 +285,7 @@ export default {
 }
 .sandwich-show{
   z-index: 5;
-  transition: all 1s;
+  transition: all .4s ease-in-out;
   position: fixed;
   width: 300px;
   min-height: 100vh;
@@ -276,6 +298,6 @@ export default {
   width: 100%;
   min-height: 100vh;
   background-color:rgba(0, 0, 0, 0.808);
-  transition: all 1s;
+  transition: all .6s ease-in-out;
 }
 </style>
