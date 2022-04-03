@@ -10,7 +10,7 @@
         @click="autoCompleteShow=false"
       >
         <div class="header-container">
-          <v-icon class="pr-6" x-large aria-hidden="false" @click="sandwich">
+          <v-icon class="pr-6" large aria-hidden="false" @click="sandwich">
             mdi-menu
           </v-icon>
           <v-toolbar-title class="title-container">
@@ -36,14 +36,14 @@
             <div class="signIn-signUp" @click="$router.push('/signin')">
               <span v-if="token" @click="logout">logout</span>
               <span v-else  >login</span>
-              <v-icon x-large aria-hidden="false">
+              <v-icon large aria-hidden="false">
                 mdi-account
               </v-icon>
             </div>
             <nuxt-link to="/checkout">
               <div class="cart">
                 shop cart
-                <v-icon x-large aria-hidden="false">
+                <v-icon large aria-hidden="false">
                   mdi-basket
                 </v-icon>
               </div>
@@ -96,64 +96,16 @@
     </div>
     <Nuxt />
     <br>
-    <div class="d-flex justify-space-around mt-6 footer pb-4">
-      <div class="d-flex flex-column ">
-        <h2 class="mt-2">
-          with mobit
-        </h2>
-        <h4 class="mt-2 cursor-pointer">
-          about mobit
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          contact mobit
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          mobit jobs
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          be a seller
-        </h4>
-      </div>
-      <div class="d-flex flex-column">
-        <h2 class="mt-2">
-          customer services
-        </h2>
-        <h4 class="mt-2 cursor-pointer">
-          the rules
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          Comprehensive guide
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          FAQ
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          pravicy
-        </h4>
-      </div>
-      <div class="d-flex flex-column">
-        <h2 class="mt-2">
-          Shopping Guide
-        </h2>
-        <h4 class="mt-2 cursor-pointer">
-          Payment methods
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          Shipping methods
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          Cancellation and return of goods
-        </h4>
-        <h4 class="mt-2 cursor-pointer">
-          Product authenticity guarantee
-        </h4>
-      </div>
-    </div>
+    <footer-area/>
   </v-app>
 </template>
 
 <script>
+import FooterArea from '~/components/FooterArea'
 export default {
+  components: {
+    FooterArea
+  },
   data () {
     return {
       autoCompleteShow: false,
@@ -283,7 +235,8 @@ export default {
     border-top: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
     border-bottom: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
     top: 100%;
-    background-color: rgb(3, 216, 216);
+    background-color: #263238;
+    color: white;
  }
 .cursor-pointer{
   cursor: pointer;
