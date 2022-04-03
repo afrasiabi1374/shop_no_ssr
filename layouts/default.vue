@@ -10,7 +10,7 @@
         @click="autoCompleteShow=false"
       >
         <div class="header-container">
-          <v-icon class="pr-6" large aria-hidden="false" @click="sandwich">
+          <v-icon class="pr-6 d-lg-none d-xl-none" large aria-hidden="false" @click="sandwich">
             mdi-menu
           </v-icon>
           <v-toolbar-title class="title-container">
