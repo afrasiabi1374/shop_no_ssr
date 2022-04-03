@@ -13,9 +13,12 @@
           <v-icon class="pr-6 d-lg-none d-xl-none" large aria-hidden="false" @click="sandwich">
             mdi-menu
           </v-icon>
-            <nuxt-link class="title-container" to="/">
-              <img class="logo mx-6" src="https://hs3-cf.behtarino.com/media/business_icons/em-jfdeilefuf-logo.jpg">
+          <v-toolbar-title class="title-container">
+            <nuxt-link to="/">
+              <img class="logo" src="https://hs3-cf.behtarino.com/media/business_icons/em-jfdeilefuf-logo.jpg">
             </nuxt-link>
+          </v-toolbar-title>
+          <div class="search-container">
             <v-text-field
               class="search"
               append-icon="mdi-icon-search"
@@ -28,6 +31,7 @@
                 <li v-for="(item, i) in autoCompleteOutput" :key="i" class="mt-6 autoCompleteItem" @click="$router.push(`/Products/singlepro/${item.id}`)" > {{ item.title }} </li>
               </ul>
             </div>
+          </div>
           <div class="sign-cart-container">
             <div class="signIn-signUp" @click="$router.push('/signin')">
               <span v-if="token" @click="logout">logout</span>
@@ -184,14 +188,14 @@ export default {
   }
   .title-container{
     display: flex;
-    position: relative;
-    margin-right: 10%;
   }
   .logo{
     display: inline-block;
-    width: 13%;
+    width: 20%;
   }
-
+  .search-container{
+    width: 70%;
+  }
   .search{
     position: absolute;
     width: 60%;
@@ -200,6 +204,7 @@ export default {
   }
   .sign-cart-container{
     display: flex;
+    justify-content: flex-end;
     position: absolute;
     left: 87%;
   }
