@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid blue-grey darken-3 white--text>
+  <v-container fluid primary lighten-1 white--text>
       <v-container class="m-auto" >
         <v-row>
             <v-col
@@ -137,12 +137,45 @@
             </v-col>
         </v-row>
       </v-container>
+      <v-divider light="true"></v-divider>
+        <v-footer
+            color="primary lighten-1"
+            padless
+        >
+            <v-row
+            justify="center"
+            no-gutters
+            >
+            <v-btn
+                v-for="link in links"
+                :key="link"
+                color="white"
+                text
+                rounded
+                class="my-2"
+            >
+                {{ link }}
+            </v-btn>
+            <v-col
+                class="primary lighten-2 py-4 text-center white--text"
+                cols="12"
+            >
+                {{ new Date().getFullYear() }} — <strong>always reseved for ali afrasiabi</strong>
+            </v-col>
+            </v-row>
+        </v-footer>
   </v-container>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      links: [
+        'HOME', 'ABOUT US', 'TEAM', 'SERVICES', 'BLOG', 'CONTACT US'
+      ]
+    }
+  }
 }
 </script>
 
