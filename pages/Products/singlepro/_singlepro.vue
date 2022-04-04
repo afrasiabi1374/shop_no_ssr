@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <v-container  class="mx-auto d-flex justify-center">
     <v-progress-circular
       v-if="loading"
       :size="50"
@@ -7,18 +7,20 @@
       indeterminate
     />
 
-    <div v-else class="single">
+    <v-row v-else class="single">
+      <v-col lg="6">
+        <ImageMagnifier
+          class="magnifier"
+          :src="pro.image"
+          :zoom-src="pro.image"
+          width="80%"
+          height="500"
+          zoom-width="500"
+          zoom-height="400"
+        />
+      </v-col>
 
-      <ImageMagnifier
-        class="magnifier"
-        :src="pro.image"
-        :zoom-src="pro.image"
-        width="80%"
-        height="500"
-        zoom-width="500"
-        zoom-height="400"
-      />
-      <div class="pro-text">
+      <v-col lg="6" class="pro-text">
         <h1>
           name : {{ pro.title }}
         </h1>
@@ -34,9 +36,9 @@
         >
           add to cart
         </v-btn>
-      </div>
-    </div>
-  </div>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 <script>
 import { ImageMagnifier } from 'vue-image-magnifier'

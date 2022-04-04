@@ -137,7 +137,7 @@
             </v-col>
         </v-row>
       </v-container>
-      <v-divider light="true"></v-divider>
+      <v-divider></v-divider>
         <v-footer
             color="primary lighten-1"
             padless

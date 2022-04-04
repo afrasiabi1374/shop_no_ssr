@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app >
     <div :class="sandwichClass">
       <div class="d-flex justify-center">
         <div class="signIn-signUp" @click="$router.push('/signin'); sandwich()">
@@ -110,7 +110,23 @@
     </div>
     <Nuxt />
     <br>
+    <v-btn
+      v-show="showUpBTN"
+      ref="button"
+      color="primary"
+      width="40"
+      @click="$vuetify.goTo(0, {
+      duration: 2000,
+      offset: 2,
+      })"
+      class="up-btn"
+    >
+      <v-icon>
+        mdi-chevron-up
+      </v-icon>
+    </v-btn>
     <footer-area/>
+
   </v-app>
 </template>
 
@@ -127,7 +143,8 @@ export default {
       autoCompleteOutput: [],
       showSandwich: false,
       sandwichClass: 'sandwich-hide',
-      mask: ''
+      mask: '',
+      showUpBTN: false
     }
   },
   computed: {
@@ -155,11 +172,24 @@ export default {
     async autoComplete () {
       this.autoCompleteShow = true
       this.autoCompleteOutput = await this.items.filter(item => item.title.toLowerCase().includes(this.autoCompleteWord.toLowerCase()))
-      console.log('auto complete', this.autoCompleteOutput)
+      //  console.log('auto complete', this.autoCompleteOutput)
       if (this.autoCompleteWord === '') {
         this.autoCompleteShow = false
       }
     }
+  },
+  mounted () {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        this.showUpBTN = true
+      } else if (window.scrollY < 600) {
+        this.showUpBTN = false
+      }
+    })
+  },
+  destroyed () {
+    window.removeEventListener('scroll')
+    console.log('distroyed')
   }
 }
 </script>
@@ -299,5 +329,23 @@ export default {
   min-height: 100vh;
   background-color:rgba(0, 0, 0, 0.808);
   transition: all .6s ease-in-out;
+}
+.up-btn{
+  position: fixed;
+  opacity: 0;
+  top: 90%;
+  right: 1%;
+  animation-name: fade;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  z-index: 11111111111111111111111111111111;
+}
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100;
+  }
 }
 </style>
