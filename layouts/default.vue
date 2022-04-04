@@ -4,7 +4,7 @@
       <div class="d-flex justify-center">
         <div class="signIn-signUp" @click="$router.push('/signin'); sandwich()">
           <span v-if="token" @click="logout()">logout</span>
-          <span v-else  >login</span>
+          <span v-else>login</span>
           <v-icon large aria-hidden="false">
             mdi-account
           </v-icon>
@@ -319,7 +319,7 @@ export default {
   position: fixed;
   width: 300px;
   min-height: 100vh;
-  background-color: lightblue;
+  background-color: #525252;
   transform: translateX(0);
 }
 .mask{
