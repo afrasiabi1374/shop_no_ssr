@@ -47,7 +47,7 @@
           <tr>
             <td>
               <h1>
-                final total : {{ finalTotal }}
+                final total : {{ finalTotal }}$
               </h1>
             </td>
           <tr>

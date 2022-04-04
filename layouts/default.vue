@@ -2,15 +2,15 @@
   <v-app>
     <div :class="sandwichClass">
       <div class="d-flex justify-center">
-        <div class="signIn-signUp" @click="$router.push('/signin')">
-          <span v-if="token" @click="logout">logout</span>
+        <div class="signIn-signUp" @click="$router.push('/signin'); sandwich()">
+          <span v-if="token" @click="logout()">logout</span>
           <span v-else  >login</span>
           <v-icon large aria-hidden="false">
             mdi-account
           </v-icon>
         </div>
         <nuxt-link to="/checkout">
-          <div class="cart">
+          <div class="cart" @click="sandwich">
             shop cart
             <v-icon large aria-hidden="false">
               mdi-basket
@@ -28,7 +28,7 @@
         @click="autoCompleteShow=false"
       >
         <div class="header-container">
-          <v-icon class="pr-6 d-lg-none d-xl-none" large aria-hidden="false" @click="sandwich">
+          <v-icon class="pl-2 d-lg-none d-xl-none" large aria-hidden="false" @click="sandwich">
             mdi-menu
           </v-icon>
             <nuxt-link class="title-container" to="/">
@@ -37,7 +37,7 @@
             <v-text-field
               class="search"
               append-icon="mdi-icon-search"
-              label = "search"
+              label = "search in gallery"
               @input="autoComplete"
               v-model="autoCompleteWord"
             />
@@ -210,15 +210,21 @@ export default {
     width: 13%;
   }
 
-  .search{
+  .search {
     position: absolute;
     width: 60%;
     top: 12%;
     left: 20%;
   }
-  @media  (max-width:960px){
+  @media  (max-width:1264px) {
     .search {
-      margin-left: 8%;
+      margin-left: 10%;
+      top: 15%;
+    }
+    .title-container {
+    }
+    .logo {
+      width: 22%;
     }
   }
   .sign-cart-container{
@@ -249,13 +255,7 @@ export default {
   .nav-text{
     font-size: 1.2em;
   }
-  .footer{
-    border-top: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
-    border-bottom: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
-    top: 100%;
-    background-color: #263238;
-    color: white;
- }
+
 .cursor-pointer{
   cursor: pointer;
 }
