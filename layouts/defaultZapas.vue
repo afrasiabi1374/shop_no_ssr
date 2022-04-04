@@ -1,6 +1,24 @@
 <template>
   <v-app>
-    <div :class="sandwichClass" ></div>
+    <div :class="sandwichClass">
+      <div class="d-flex justify-center">
+        <div class="signIn-signUp" @click="$router.push('/signin'); sandwich()">
+          <span v-if="token" @click="logout()">logout</span>
+          <span v-else  >login</span>
+          <v-icon large aria-hidden="false">
+            mdi-account
+          </v-icon>
+        </div>
+        <nuxt-link to="/checkout">
+          <div class="cart" @click="sandwich">
+            shop cart
+            <v-icon large aria-hidden="false">
+              mdi-basket
+            </v-icon>
+          </div>
+        </nuxt-link>
+    </div>
+    </div>
     <div :class="mask" @click="sandwich"></div>
     <div style="width:100%;display:inline-flex;flex-wrap: nowrap;justify-content: center">
       <div
@@ -10,19 +28,16 @@
         @click="autoCompleteShow=false"
       >
         <div class="header-container">
-          <v-icon class="pr-6 d-lg-none d-xl-none" large aria-hidden="false" @click="sandwich">
+          <v-icon class="pl-2 d-lg-none d-xl-none" large aria-hidden="false" @click="sandwich">
             mdi-menu
           </v-icon>
-          <v-toolbar-title class="title-container">
-            <nuxt-link to="/">
-              <img class="logo" src="https://hs3-cf.behtarino.com/media/business_icons/em-jfdeilefuf-logo.jpg">
+            <nuxt-link class="title-container" to="/">
+              <img class="logo mx-6" src="https://hs3-cf.behtarino.com/media/business_icons/em-jfdeilefuf-logo.jpg">
             </nuxt-link>
-          </v-toolbar-title>
-          <div class="search-container">
             <v-text-field
               class="search"
               append-icon="mdi-icon-search"
-              label = "search"
+              label = "search in gallery"
               @input="autoComplete"
               v-model="autoCompleteWord"
             />
@@ -31,8 +46,7 @@
                 <li v-for="(item, i) in autoCompleteOutput" :key="i" class="mt-6 autoCompleteItem" @click="$router.push(`/Products/singlepro/${item.id}`)" > {{ item.title }} </li>
               </ul>
             </div>
-          </div>
-          <div class="sign-cart-container">
+          <div class="d-none d-lg-flex d-xl-flex">
             <div class="signIn-signUp" @click="$router.push('/signin')">
               <span v-if="token" @click="logout">logout</span>
               <span v-else  >login</span>
@@ -188,23 +202,32 @@ export default {
   }
   .title-container{
     display: flex;
+    position: relative;
+    margin-right: 10%;
   }
   .logo{
     display: inline-block;
-    width: 20%;
+    width: 13%;
   }
-  .search-container{
-    width: 70%;
-  }
-  .search{
+
+  .search {
     position: absolute;
     width: 60%;
     top: 12%;
     left: 20%;
   }
+  @media  (max-width:1264px) {
+    .search {
+      margin-left: 10%;
+      top: 15%;
+    }
+    .title-container {
+    }
+    .logo {
+      width: 22%;
+    }
+  }
   .sign-cart-container{
-    display: flex;
-    justify-content: flex-end;
     position: absolute;
     left: 87%;
   }
@@ -232,13 +255,7 @@ export default {
   .nav-text{
     font-size: 1.2em;
   }
-  .footer{
-    border-top: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
-    border-bottom: rgba(red, green, rgba(146, 146, 146, 0.452), alpha);
-    top: 100%;
-    background-color: #263238;
-    color: white;
- }
+
 .cursor-pointer{
   cursor: pointer;
 }
@@ -257,7 +274,7 @@ export default {
   cursor: pointer;
 }
 .sandwich-hide{
-    transition: all 1s;
+    transition: all .4s ease-in-out;
   transform: translateX(-700px);
   position: fixed;
   width: 300px;
@@ -268,7 +285,7 @@ export default {
 }
 .sandwich-show{
   z-index: 5;
-  transition: all 1s;
+  transition: all .4s ease-in-out;
   position: fixed;
   width: 300px;
   min-height: 100vh;
@@ -281,6 +298,6 @@ export default {
   width: 100%;
   min-height: 100vh;
   background-color:rgba(0, 0, 0, 0.808);
-  transition: all 1s;
+  transition: all .6s ease-in-out;
 }
 </style>
