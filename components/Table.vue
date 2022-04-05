@@ -1,26 +1,38 @@
 <template>
-  <div>
+  <v-container fluid class="mt-6">
     <v-simple-table v-if="finalTotal !== 0">
       <template v-slot:default>
         <thead>
-          <tr>
+          <tr class="table-content">
             <th class="text-left">
-              Name
+              <h2 class="headline">
+                Name
+              </h2>
             </th>
             <th class="text-left">
-              count
+              <h2 class="headline">
+                count
+              </h2>
             </th>
             <th class="text-left">
-              price
+              <h2 class="headline">
+                price
+              </h2>
             </th>
             <th class="text-left">
-              image
+              <h2 class="headline">
+                image
+              </h2>
             </th>
             <th class="text-left">
-              total
+              <h2 class="headline">
+                total
+              </h2>
             </th>
             <th class="text-left">
-              delete
+              <h2 class="headline">
+                delete
+              </h2>
             </th>
           </tr>
         </thead>
@@ -30,8 +42,8 @@
             :key="item.id"
             class="table-content"
           >
-            <td>{{ item.title }}</td>
-            <td class="pro-count">
+            <td  style="font-size:1.2em;cursor: pointer;">{{ item.title }}</td>
+            <td class="pro-count body-1">
               <button @click="increment (item.id)" style="font-size:1.5em;cursor: pointer;">
                 +
               </button>
@@ -40,30 +52,33 @@
                 -
               </button>
             </td>
-            <td>{{ item.price }} $</td>
+            <td style="font-size:1.5em;cursor: pointer;">{{ item.price }} $</td>
             <td><img width="100px" :src="item.image" alt="product-image"></td>
-            <td width="300px">{{ item.price*item.quantity }}$</td>
+            <td width="300px" style="font-size:1.5em;cursor: pointer;">{{ item.price*item.quantity }}$</td>
             <td style="cursor: pointer" @click="remove(item.id)"><v-icon>mdi-delete</v-icon></td>
           </tr>
-          <tr>
-            <td>
+          <tr class="table-content-2">
+            <td >
               <h1>
                 final total : {{ finalTotal }}$
               </h1>
             </td>
-          <tr>
-            <v-btn @click="clearCart()" class="">
-              clearCart
-            </v-btn>
-            <v-btn class="ml-3" color="green" @click="finalize()">
-              finalize
-            </v-btn>
+            <td>
+              <v-btn @click="clearCart()" class="">
+                clearCart
+              </v-btn>
+            </td>
+            <td>
+              <v-btn class="ml-3" color="green" @click="finalize()">
+                finalize
+              </v-btn>
+            </td>
           </tr>
         </tbody>
       </template>
     </v-simple-table>
     <img v-else src="https://www.no-fea.com/front/images/empty-cart.png" class="d-block mx-auto " alt="">
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -118,5 +133,11 @@ export default {
   }
   .table-content {
     height: 100px;
+  }
+  .table-content-2 {
+    height: 70px;
+  }
+  .finalize-container {
+    height: 170px;
   }
 </style>
