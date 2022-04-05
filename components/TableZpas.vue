@@ -28,10 +28,9 @@
           <tr
             v-for="item in cartItems"
             :key="item.id"
-            class="table-content"
           >
             <td>{{ item.title }}</td>
-            <td class="pro-count">
+            <td style="">
               <button @click="increment (item.id)" style="font-size:1.5em;cursor: pointer;">
                 +
               </button>
@@ -42,7 +41,7 @@
             </td>
             <td>{{ item.price }} $</td>
             <td><img width="100px" :src="item.image" alt="product-image"></td>
-            <td width="300px">{{ item.price*item.quantity }}$</td>
+            <td width="300px">{{ item.price*item.quantity }}</td>
             <td style="cursor: pointer" @click="remove(item.id)"><v-icon>mdi-delete</v-icon></td>
           </tr>
           <tr>
@@ -113,10 +112,5 @@ export default {
 </script>
 
 <style>
-  .pro-count {
-    width: 100px;
-  }
-  .table-content {
-    height: 100px;
-  }
+
 </style>
