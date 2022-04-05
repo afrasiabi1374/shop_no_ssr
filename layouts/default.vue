@@ -11,7 +11,7 @@
         </div>
         <nuxt-link to="/checkout">
           <div class="cart" @click="sandwich">
-            shop cart
+             cart
             <v-icon large aria-hidden="false">
               mdi-basket
             </v-icon>
@@ -46,17 +46,17 @@
                 <li v-for="(item, i) in autoCompleteOutput" :key="i" class="mt-6 autoCompleteItem" @click="$router.push(`/Products/singlepro/${item.id}`)" > {{ item.title }} </li>
               </ul>
             </div>
-          <div class="d-none d-lg-flex d-xl-flex">
+          <div class="d-none d-lg-flex d-xl-flex ">
             <div class="signIn-signUp" @click="$router.push('/signin')">
-              <span v-if="token" @click="logout">logout</span>
-              <span v-else  >login</span>
+              <span v-if="token" @click="logout" class="black--text">logout</span>
+              <span v-else class="black--text" >login</span>
               <v-icon large aria-hidden="false">
                 mdi-account
               </v-icon>
             </div>
             <nuxt-link to="/checkout">
-              <div class="cart">
-                shop cart
+              <div class="cart black--text">
+                 cart
                 <v-icon large aria-hidden="false">
                   mdi-basket
                 </v-icon>
@@ -70,7 +70,7 @@
               <v-icon large aria-hidden="false">
                 mdi-tshirt-v-outline
               </v-icon>
-              <span class="nav-text">clothes</span>
+              <nuxt-link to="#" class="nav-text">clothes</nuxt-link>
               <div class="child-menu">
                 <h3>
                   <nuxt-link to="/products/men's clothing">
@@ -249,7 +249,7 @@ export default {
   @media  (max-width:1264px) {
     .search {
       margin-left: 10%;
-      top: 15%;
+      top: 12%;
     }
     .title-container {
     }
@@ -319,8 +319,11 @@ export default {
   position: fixed;
   width: 300px;
   min-height: 100vh;
-  background-color: #525252;
+  background-color: #E4E4E4;
   transform: translateX(0);
+}
+.sandwich-show a{
+  color: gray;
 }
 .mask{
   z-index: 4;
