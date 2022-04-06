@@ -251,7 +251,8 @@ export default {
       margin-left: 10%;
       top: 12%;
     }
-    .title-container {
+    .autoCompleteText {
+      left: 30%!important;
     }
     .logo {
       width: 22%;
@@ -296,8 +297,9 @@ export default {
   z-index: 2;
   background-color: aliceblue;
   left: 20%;
-  top: 80%;
+  top: 60px;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .autoCompleteItem {
