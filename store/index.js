@@ -5,6 +5,7 @@ function updateLocalStorage (cart) {
 }
 export const state = {
   allPro: [],
+  singlePro: '',
   cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
   log: 'login',
   token: ''
@@ -13,6 +14,9 @@ export const getters = {
   getProByCat: state => (cat) => {
     return state.allPro.filter(pro => pro.category === cat)
   },
+
+  getSingle: state => state.singlePro,
+
   getProById: state => (id) => {
     return state.allPro.find(pro => pro.id === id)
   },
@@ -37,7 +41,11 @@ export const mutations = {
   },
   allPro (state, response) {
     state.allPro = response
-    console.log('alilililililili', state.allPro)
+    // console.log('alilililililili', state.allPro)
+  },
+  singlePro (state, response) {
+    state.singlePro = response
+    console.log('single', state.singlePro)
   },
   addToCart (state, product) {
     const item = state.cart.find(item => item.id === product.id)
@@ -58,7 +66,7 @@ export const mutations = {
     })
     updateLocalStorage(state.cart)
 
-    console.log(state.cart)
+    // console.log(state.cart)
   },
   increment (state, id) {
     const item = state.cart.find(item => item.id === id)
@@ -74,7 +82,7 @@ export const mutations = {
   },
   delete (state, id) {
     const index = state.cart.findIndex(item => item.id === id)
-    console.log(index)
+    // console.log(index)
     if (index !== -1) {
       state.cart.splice(index, 1)
     }
@@ -97,7 +105,7 @@ export const actions = {
     await axios.get('https://fakestoreapi.com/products/category/jewelery')
       .then((res) => {
         commit('someJewel', res.data)
-        console.log('جواهر:', res.data)
+        // console.log('جواهر:', res.data)
       })
       .catch((err) => {
         console.error(err)
@@ -107,7 +115,17 @@ export const actions = {
     try {
       const res = await axios.get('https://fakestoreapi.com/products')
       await commit('allPro', res.data)
-      console.log('همه ', res.data)
+      // console.log('همه ', res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  async fetchSinglePro ({ commit }, id) {
+    try {
+      const res = await axios.get(`https://fakestoreapi.com/products/${id}`)
+      console.log('=>>>>>>>>>>>>>>>>>>>>>>>>', res)
+      await commit('singlePro', res.data)
+      // console.log('همه ', res.data)
     } catch (error) {
       console.error(error)
     }
@@ -119,7 +137,7 @@ export const actions = {
         email: params.user,
         password: params.pass
       })
-      console.log(res.data)
+      // console.log(res.data)
       await commit('submitToken', res.data)
       Swal.fire({
         position: 'center',

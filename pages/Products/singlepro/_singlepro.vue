@@ -1,5 +1,5 @@
 <template>
-  <v-container  class="mx-auto d-flex justify-center">
+  <v-container  class="mx-auto d-flex justify-center page-min-height">
     <v-progress-circular
       v-if="loading"
       :size="50"
@@ -46,7 +46,7 @@ export default {
   components: { ImageMagnifier },
   data () {
     return {
-      id: '',
+      id: this.$route.params.singlepro,
       pro: '',
       loading: false
     }
@@ -54,14 +54,14 @@ export default {
   computed: {
 
   },
-  mounted () {
+  beforeMount () {
     this.showPro()
   },
   methods: {
     async showPro () {
       this.loading = true
-      this.id = await this.$route.params.singlepro
-      this.pro = await this.$store.getters.getProById(Number(this.id))
+      await this.$store.dispatch('fetchSinglePro', this.id)
+      this.pro = this.$store.getters.getSingle
       this.loading = false
     },
     addToCart (pro) {
@@ -81,7 +81,6 @@ export default {
   .single {
     flex-direction: column;
   }
-
 }
 .pro-text {
   width: 60%;
@@ -91,5 +90,7 @@ export default {
   min-height: 100vh;
   display: flex;
 }
-
+.page-min-height {
+  min-height: 100vh;
+}
 </style>
